@@ -2,26 +2,28 @@
   MATERI 6: NAMED CONSTRUCTOR
   
   Penjelasan:
-  - Di Dart, kita nggak bisa bikin banyak constructor dengan nama yang sama.
-  - Solusinya pakai 'Named Constructor', yaitu constructor yang punya nama unik.
-  - Ini berguna kalau kita mau bikin objek dengan cara yang beda-beda.
+  - Named Constructor adalah fitur Dart yang memungkinkan sebuah class memiliki 
+    lebih dari satu constructor dengan nama yang berbeda.
+  - Ini sangat berguna untuk menciptakan objek dengan skenario inisialisasi yang berbeda.
   
   Langkah kerja:
-  1. Buat class Student dengan properti dasar.
-  2. Buat Default Constructor dan Named Constructor (misal: Student.umum).
-  3. Panggil masing-masing constructor di fungsi main.
+  1. Buat class Student dengan properti name dan age.
+  2. Implementasikan Default Constructor.
+  3. Buat Named Constructor dengan sintaks: Student.namaConstructor().
+  4. Panggil kedua jenis constructor tersebut di fungsi main.
 */
 
 class Student {
   String? name;
   int? age;
 
-  // Constructor Utama
+  // Default Constructor
   Student(this.name, this.age);
 
-  // Named Constructor
-  Student.tanpaUmur(this.name) {
-    age = 0; // nilai default
+  // Named Constructor: inisialisasi mahasiswa baru dengan umur default 0
+  Student.maba(this.name) {
+    age = 18;
+    print("Membentuk objek mahasiswa baru...");
   }
 
   void info() {
@@ -30,11 +32,13 @@ class Student {
 }
 
 void main() {
-  // Pakai constructor utama
-  var mhs1 = Student("Andi", 20);
-  mhs1.info();
+  // Menggunakan Default Constructor
+  var s1 = Student("Andi", 20);
+  s1.info();
 
-  // Pakai named constructor
-  var mhs2 = Student.tanpaUmur("Joko");
-  mhs2.info();
+  print("------------------");
+
+  // Menggunakan Named Constructor
+  var s2 = Student.maba("Rian");
+  s2.info();
 }
